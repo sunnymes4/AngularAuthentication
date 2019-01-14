@@ -1,0 +1,47 @@
+
+<div class="login-box">
+  <div class="login-logo">
+    <span style="color:#1a4073;"><b>ATM </b>Corridor</span> 
+  </div>
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-group has-feedback">
+          <input type="text" formControlName="username" class="form-control" placeholder="Employee NTLG" [ngClass]="{ 'is-invalid': submitted && loginForm.username.errors }" />
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <div *ngIf="submitted && loginForm.username.errors">
+              <div *ngIf="loginForm.username.errors.required"><span style="color: red;">Employee NTLG is required</span></div>
+          </div>
+        
+      </div>
+      <div class="form-group has-feedback">
+          <input type="password" formControlName="password" placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }" />
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <div *ngIf="submitted && loginForm.password.errors" class="invalid-feedback">
+            <div *ngIf="loginForm.password.errors.required"><span style="color: red;">Password is required</span></div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;">
+                <input type="checkbox">
+                <ins class="iCheck-helper"></ins>
+              </div> 
+              Remember Me
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        
+        <!-- /.col -->
+      </div>
+      <div *ngIf="error" class="alert-danger">{{error}}</div>
+    </form>
+  </div>
+</div>
